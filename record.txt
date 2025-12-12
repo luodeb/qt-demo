@@ -1,0 +1,23 @@
+Segmentation fault (core dumped)
+Signal: SIGSEGV
+Address: 0xdeadbeef
+Timestamp: 2025-12-12 16:30:45
+Module: libkernel.so
+Thread ID: 54321
+Process ID: 98765
+
+Stack trace:
+  #0  0x7fff8a2e4560 in crash_function() at crash.cpp:42
+  #1  0x7fff8a2e4780 in process_data() at processor.cpp:156
+  #2  0x7fff8a2e4890 in main_loop() at main.cpp:89
+  #3  0x7fff8a2e4a20 in main() at main.cpp:15
+
+Register dump:
+  RAX: 0xdeadbeef  RBX: 0x00007fff8a2e5000
+  RCX: 0x00000001  RDX: 0x0000000000000000
+  RSI: 0x12345678  RDI: 0xabcdef00
+
+Additional Info:
+  Available memory: 2048 MB
+  CPU usage: 85%
+  Uptime: 3 days, 14:23:45
