@@ -40,27 +40,7 @@ void CrashDetailsDialog::setupUI() {
     crashInfoText->setObjectName("crashInfoText");
     crashInfoText->setReadOnly(true);
     crashInfoText->setPlainText(crashInformation.isEmpty() ? 
-        "Segmentation fault (core dumped)\n"
-        "Signal: SIGSEGV\n"
-        "Address: 0x00000000\n"
-        "Timestamp: 2025-12-12 14:23:45\n"
-        "Module: kernel.sys\n"
-        "Thread ID: 12345\n"
-        "Process ID: 67890\n\n"
-        "Stack trace:\n"
-        "  #0  0x7fff8a2e4560 in function_a() at module_a.cpp:123\n"
-        "  #1  0x7fff8a2e4780 in function_b() at module_b.cpp:456\n"
-        "  #2  0x7fff8a2e4890 in function_c() at module_c.cpp:789\n"
-        "  #3  0x7fff8a2e4a20 in main() at main.cpp:42\n\n"
-        "Register dump:\n"
-        "  RAX: 0x0000000000000000  RBX: 0x00007fff8a2e5000\n"
-        "  RCX: 0x00007fff8a2e4560  RDX: 0x0000000000000001\n"
-        "  RSI: 0x00007fff8a2e6000  RDI: 0x00007fff8a2e7000\n"
-        "  RBP: 0x00007fff8a2e8000  RSP: 0x00007fff8a2e9000\n\n"
-        "Memory map:\n"
-        "  0x00400000-0x00600000 r-xp  /usr/bin/application\n"
-        "  0x00800000-0x00900000 rw-p  [heap]\n"
-        "  0x7fff8a000000-0x7fff8b000000 r-xp  /lib/x86_64-linux-gnu/libc.so.6"
+        "无崩溃信息可显示。"
         : crashInformation);
     mainLayout->addWidget(crashInfoText);
     
