@@ -6,8 +6,12 @@
 #include <QCommandLineParser>
 #include <QFile>
 #include <QTextStream>
+#include <QLoggingCategory>
 
 int main(int argc, char *argv[]) {
+    // 忽略字体加载警告
+    QLoggingCategory::setFilterRules("qt.qpa.fonts.warning=false");
+
     QApplication app(argc, argv);
     
     // 设置应用程序信息
@@ -63,7 +67,7 @@ int main(int argc, char *argv[]) {
     CrashDialog *crashDialog = new CrashDialog(crashLog);
     
     // 显示对话框
-    int result = crashDialog->exec();
+    crashDialog->exec();
     
     // 获取并打印结果
     QString actionResult = crashDialog->getResult();

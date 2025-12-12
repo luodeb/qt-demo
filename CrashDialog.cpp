@@ -6,6 +6,7 @@
 #include <QScreen>
 #include <QApplication>
 #include <QClipboard>
+#include <QMouseEvent>
 
 CrashDialog::CrashDialog(const QString &crashInfo, QWidget *parent)
     : QDialog(parent), crashInformation(crashInfo) {
@@ -137,20 +138,20 @@ void CrashDialog::setupStyles() {
             color: #2c3e50;
             font-size: 24px;
             font-weight: bold;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
         }
         
         #descriptionLabel {
             color: #657786;
             font-size: 13px;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
         }
         
         #infoLabel {
             color: #2c3e50;
             font-size: 14px;
             font-weight: 600;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
         }
         
         #divider {
@@ -163,7 +164,7 @@ void CrashDialog::setupStyles() {
         #detailsButton {
             color: #95a5a6;
             font-size: 12px;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
             padding: 3px 8px;
             margin-left: 5px;
             border: none;
@@ -183,7 +184,7 @@ void CrashDialog::setupStyles() {
             border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
             padding: 8px;
         }
         
@@ -204,7 +205,7 @@ void CrashDialog::setupStyles() {
             border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
             padding: 8px;
         }
         
@@ -292,4 +293,26 @@ void CrashDialog::onUploadClicked() {
     });
     
     scaleAnim->start(QAbstractAnimation::DeleteWhenStopped);
+}
+
+void CrashDialog::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
+        m_isDragging = true;
+        m_dragPosition = event->globalPos() - frameGeometry().topLeft();
+        event->accept();
+    }
+}
+
+void CrashDialog::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton && m_isDragging) {
+        move(event->globalPos() - m_dragPosition);
+        event->accept();
+    }
+}
+
+void CrashDialog::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
+        m_isDragging = false;
+        event->accept();
+    }
 }

@@ -83,7 +83,7 @@ void CrashDetailsDialog::setupStyles() {
             color: #2c3e50;
             font-size: 18px;
             font-weight: bold;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
             padding-bottom: 5px;
         }
         
@@ -107,7 +107,7 @@ void CrashDetailsDialog::setupStyles() {
             border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
             padding: 8px 16px;
         }
         
@@ -128,7 +128,7 @@ void CrashDetailsDialog::setupStyles() {
             border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
-            font-family: "Segoe UI", "Microsoft YaHei", Arial;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
             padding: 8px;
         }
         

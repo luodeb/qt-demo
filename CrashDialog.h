@@ -25,6 +25,11 @@ public:
     
     QString getResult() const;
 
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
 signals:
     void ignoreClicked();
     void uploadClicked();
@@ -32,6 +37,7 @@ signals:
 private slots:
     void onIgnoreClicked();
     void onUploadClicked();
+    void toggleDetails();
 
 private:
     void setupUI();
@@ -52,8 +58,9 @@ private:
     QPropertyAnimation *slideAnimation;
     QString result;
     
-private slots:
-    void toggleDetails();
+    // 拖动相关
+    bool m_isDragging = false;
+    QPoint m_dragPosition;
 };
 
 #endif // CRASHDIALOG_H
